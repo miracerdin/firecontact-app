@@ -53,8 +53,8 @@ const Form = ({ setContactList }) => {
     <form
       style={{
         backgroundColor: "white",
-        maxWidth: "500px",
-        maxHeight: "300px",
+        // maxWidth: "500px",
+        // maxHeight: "300px",
         margin: "auto",
       }}
       onSubmit={writeUserData}

@@ -30,7 +30,7 @@ export default function FormDialog({
       phone: updateInfo.phone,
       gender: updateInfo.gender,
     });
-    toastSuccessNotify("Successfully Changed!");
+    toastSuccessNotify("Successfully Updated!");
     handleClose();
   };
   return (

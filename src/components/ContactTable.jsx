@@ -31,9 +31,9 @@ export default function ContactTable({ setConctactList, contactList }) {
     <TableContainer
       component={Paper}
       sx={{
-        maxWidth: "500px",
+        // maxWidth: "500px",
         maxHeight: 300,
-        overflow: "auto",
+        // overflow: "auto",
         mx: "auto",
       }}
     >
