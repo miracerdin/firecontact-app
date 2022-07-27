@@ -35,7 +35,7 @@ export default function FormDialog({
   };
   return (
     <div>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} maxWidth="xs" fullWidth onClose={handleClose}>
         <DialogTitle>Update Contact</DialogTitle>
         <DialogContent>
           <TextField
