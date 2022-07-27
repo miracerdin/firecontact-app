@@ -32,6 +32,9 @@ const Form = ({ setContactList }) => {
       phone: phone,
       gender: gender,
     });
+    setName("");
+    setPhone("");
+    setGender("");
   }
 
   useEffect(() => {
@@ -53,8 +56,6 @@ const Form = ({ setContactList }) => {
     <form
       style={{
         backgroundColor: "white",
-        // maxWidth: "500px",
-        // maxHeight: "300px",
         margin: "auto",
       }}
       onSubmit={writeUserData}
