@@ -53,7 +53,15 @@ export default function ContactTable({ setConctactList, contactList }) {
               key={contact.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell
+                component="th"
+                scope="row"
+                sx={{
+                  maxWidth: "200px",
+                  wordWrap: "break-word",
+                  overflow: "hidden",
+                }}
+              >
                 {contact.name}
               </TableCell>
               <TableCell align="right">{contact.phone}</TableCell>
