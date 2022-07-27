@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { MenuItem, Select, InputLabel, FormControl } from "@mui/material";
 import { db } from "../firebase/firebase";
 import { ref, update } from "firebase/database";
+import { toastSuccessNotify } from "../helpers/ToastNotify";
 
 export default function FormDialog({
   open,
@@ -29,6 +30,7 @@ export default function FormDialog({
       phone: updateInfo.phone,
       gender: updateInfo.gender,
     });
+    toastSuccessNotify("Successfully Changed!");
     handleClose();
   };
   return (

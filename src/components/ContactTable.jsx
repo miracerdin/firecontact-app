@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import { remove, ref } from "firebase/database";
 import { db } from "../firebase/firebase";
 import FormDialog from "./FormDialog";
+import { toastWarnNotify } from "../helpers/ToastNotify";
 
 export default function ContactTable({ setConctactList, contactList }) {
   const [open, setOpen] = React.useState(false);
@@ -19,6 +20,7 @@ export default function ContactTable({ setConctactList, contactList }) {
 
   const deleteContact = (id) => {
     remove(ref(db, "contacts/" + id));
+    toastWarnNotify("Contact Deleted!!");
   };
   const editContact = (id, name, phone, gender) => {
     setOpen(true);
@@ -26,8 +28,16 @@ export default function ContactTable({ setConctactList, contactList }) {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer
+      component={Paper}
+      sx={{
+        maxWidth: "500px",
+        maxHeight: 300,
+        overflow: "auto",
+        mx: "auto",
+      }}
+    >
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>

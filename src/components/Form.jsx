@@ -15,6 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import React, { useEffect, useState } from "react";
 import { ref, set, push, onValue } from "firebase/database";
 import { db } from "../firebase/firebase";
+import { toastSuccessNotify } from "../helpers/ToastNotify";
 
 const Form = ({ setContactList }) => {
   const [name, setName] = useState("");
@@ -25,6 +26,7 @@ const Form = ({ setContactList }) => {
     e.preventDefault();
     const contactsRef = ref(db, "contacts");
     const newContactRef = push(contactsRef);
+    toastSuccessNotify("New Contact Successfully Added!");
     set(newContactRef, {
       name: name,
       phone: phone,
@@ -43,11 +45,20 @@ const Form = ({ setContactList }) => {
       console.log(contactArr);
       setContactList(contactArr);
     });
+
     // eslint-disable-next-line
   }, []);
 
   return (
-    <form style={{ marginTop: "1rem" }} onSubmit={writeUserData}>
+    <form
+      style={{
+        backgroundColor: "white",
+        maxWidth: "500px",
+        maxHeight: "500px",
+        margin: "auto",
+      }}
+      onSubmit={writeUserData}
+    >
       <Box component="form" noValidate autoComplete="off">
         <div>
           <Typography variant="h4">Add Contact</Typography>

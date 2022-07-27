@@ -6,19 +6,17 @@ import Form from "./Form";
 const Main = () => {
   const [contactList, setContactList] = useState([]);
   return (
-    <div>
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Form contactList={contactList} setContactList={setContactList} />
-        </Grid>
-        <Grid item xs={8}>
-          <ContactTable
-            contactList={contactList}
-            setContactList={setContactList}
-          />
-        </Grid>
+    <Grid container spacing={0} style={{ minHeight: "100vh" }}>
+      <Grid item xs={12} md={5} sx={{ m: "auto" }}>
+        <Form contactList={contactList} setContactList={setContactList} />
       </Grid>
-    </div>
+      <Grid item xs={12} md={5} sx={{ m: "auto" }}>
+        <ContactTable
+          contactList={contactList}
+          setContactList={setContactList}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
