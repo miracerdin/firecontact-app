@@ -42,6 +42,7 @@ const Form = ({ setContactList }) => {
     onValue(contactsRef, (snapshot) => {
       const contactArr = [];
       const data = snapshot.val();
+      console.log(data);
       for (let id in data) {
         contactArr.push({ id, ...data[id] });
       }
@@ -51,7 +52,7 @@ const Form = ({ setContactList }) => {
 
     // eslint-disable-next-line
   }, []);
-
+  console.log(phone, name, gender);
   return (
     <form
       style={{
@@ -60,50 +61,47 @@ const Form = ({ setContactList }) => {
       }}
       onSubmit={writeUserData}
     >
-      <Box component="form" noValidate autoComplete="off">
-        <div>
-          <Typography variant="h4">Add Contact</Typography>
-        </div>
-        <div>
-          <TextField
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <IconButton>
-                    <AccountCircle />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            required
-            id="outlined-required"
-            label="Name"
-            defaultValue=""
-            fullWidth
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
-          <TextField
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <IconButton>
-                    <PhoneIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            required
-            id="outlined-number"
-            label="Teleophone"
-            type="tel"
-            fullWidth
-            onChange={(e) => setPhone(e.target.value)}
-            value={phone}
-          />
-        </div>
+      <Box component="div" noValidate autoComplete="off">
+        <Typography variant="h4">Add Contact</Typography>
+
+        <TextField
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <IconButton>
+                  <AccountCircle />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          required
+          id="outlined-required"
+          label="Name"
+          defaultValue=""
+          fullWidth
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+        <TextField
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <IconButton>
+                  <PhoneIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          required
+          id="outlined-number"
+          label="Telephone"
+          type="number"
+          fullWidth
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
       </Box>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Gender</InputLabel>

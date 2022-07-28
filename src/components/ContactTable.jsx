@@ -17,7 +17,6 @@ import { toastWarnNotify } from "../helpers/ToastNotify";
 export default function ContactTable({ setConctactList, contactList }) {
   const [open, setOpen] = React.useState(false);
   const [updateInfo, setUpdateInfo] = React.useState({});
-
   const deleteContact = (id) => {
     remove(ref(db, "contacts/" + id));
     toastWarnNotify("Contact Deleted!!");
@@ -48,51 +47,61 @@ export default function ContactTable({ setConctactList, contactList }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {contactList?.map((contact) => (
+          {contactList?.lenght <= 0 ? (
             <TableRow
-              key={contact.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell
-                component="th"
-                scope="row"
-                sx={{
-                  maxWidth: "200px",
-                  wordWrap: "break-word",
-                  overflow: "hidden",
-                }}
-              >
-                {contact.name}
+              <TableCell colSpan={5} align="center">
+                No Results Found
               </TableCell>
-              <TableCell align="right">{contact.phone}</TableCell>
-              <TableCell align="right">{contact.gender}</TableCell>
-              <TableCell align="right">
-                <IconButton>
-                  <EditIcon
-                    onClick={() =>
-                      editContact(
-                        contact.id,
-                        contact.name,
-                        contact.phone,
-                        contact.gender
-                      )
-                    }
-                  />
-                </IconButton>
-              </TableCell>
-              <TableCell align="right">
-                <IconButton>
-                  <DeleteIcon onClick={() => deleteContact(contact.id)} />
-                </IconButton>
-              </TableCell>
-              <FormDialog
-                open={open}
-                setOpen={setOpen}
-                updateInfo={updateInfo}
-                setUpdateInfo={setUpdateInfo}
-              />
             </TableRow>
-          ))}
+          ) : (
+            contactList?.map((contact) => (
+              <TableRow
+                key={contact.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell
+                  component="th"
+                  scope="row"
+                  sx={{
+                    maxWidth: "200px",
+                    wordWrap: "break-word",
+                    overflow: "hidden",
+                  }}
+                >
+                  {contact.name}
+                </TableCell>
+                <TableCell align="right">{contact.phone}</TableCell>
+                <TableCell align="right">{contact.gender}</TableCell>
+                <TableCell align="right">
+                  <IconButton>
+                    <EditIcon
+                      onClick={() =>
+                        editContact(
+                          contact.id,
+                          contact.name,
+                          contact.phone,
+                          contact.gender
+                        )
+                      }
+                    />
+                  </IconButton>
+                </TableCell>
+                <TableCell align="right">
+                  <IconButton>
+                    <DeleteIcon onClick={() => deleteContact(contact.id)} />
+                  </IconButton>
+                </TableCell>
+                <FormDialog
+                  open={open}
+                  setOpen={setOpen}
+                  updateInfo={updateInfo}
+                  setUpdateInfo={setUpdateInfo}
+                />
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </TableContainer>
