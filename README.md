@@ -3,7 +3,7 @@
 
 ## Description
 
-Project aims to create a FireContact App.
+In this project, I made CRUD operations using the Firebase database. I got notification by adding Toastify.
 
 ## Problem Statement
 
